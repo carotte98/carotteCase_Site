@@ -1,0 +1,3 @@
+spring.application.name=codecasesite
+
+server.port=9001
