@@ -1,0 +1,38 @@
+:root {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /* Variables */
+    --color-gris-100 : #232328;
+    --color-gris-80 : #727273;
+    --color-gris-60 : #BDBFBF;
+    --color-gris-40 : #D9D9D9;
+    --color-gris-20 : #EBEBEB;
+    --color-gris-00 : #F2F2F2;
+
+    --color-vert : #009207;
+    --color-rouge : #A40800;
+    --color-jaune : #FCCD35;
+    --color-rose-fonce : #D22D67;
+    --color-rose-clair : #EBC0D7;
+    --color-orange-fonce : #D2562D;
+    --color-orange-clair : #EFCEC3;
+
+    /* Font-Family */
+    --source: "Source+Code+Pro";
+    --inter : "Inter";
+
+    /* FONT-SIZE */
+    /* Echelle de base du navigateur par défaut 16px */
+    /* Format : clamp(taille minimale, valeur variable, taille maximale */
+
+    --h1-size: clamp(2rem, 3vw + 1rem, 3rem);
+    --h2-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+    --h3-size: clamp(1.25rem, 2vw + 1rem, 1.5rem);
+
+
+
+
+}
+
