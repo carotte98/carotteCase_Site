@@ -3,6 +3,12 @@
     margin: 0;
     padding: 0;
 
+    .icon::before {
+        display: inline-block;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
     /* Variables */
     --color-gris-100 : #232328;
     --color-gris-80 : #727273;
@@ -22,6 +28,7 @@
     /* Font-Family */
     --source: "Source+Code+Pro";
     --inter : "Inter";
+    --fontawesome : "Font Awesome 6 Free";
 
     /* FONT-SIZE */
     /* Echelle de base du navigateur par défaut 16px */
@@ -30,9 +37,376 @@
     --h1-size: clamp(2rem, 3vw + 1rem, 3rem);
     --h2-size: clamp(1.5rem, 2vw + 1rem, 2rem);
     --h3-size: clamp(1.25rem, 2vw + 1rem, 1.5rem);
+}
 
+html, body {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    margin : 0;
+    padding: 0;
+}
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    header {
+        background-color: var(--color-gris-100);
+        width: 100vw;
+        max-height: 150px;
+        height: 13vh;
+        display: flex;
+        justify-content: center;
+
+        #header-container {
+            max-width: 1440px;
+            width: 82vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-content: center;
+
+            #logo-container {
+                max-width: 160px;
+                display: flex;
+                align-items: center;
+                margin-left : clamp(1rem, 50px, 3.5rem);
+
+                .logo {
+                    max-height: 60px;
+                    height: 40%;
+                    width: auto;
+                }
+            }
+
+            #signin-container {
+                display: flex;
+                align-items: center;
+
+                & span:first-child {
+                    margin-right: clamp(0.5rem, 20px, 1.5rem);
+                }
+
+                & span:last-child {
+                    margin-right: clamp(1rem, 50px, 3.5rem);
+                }
+            }
+        }
+    }
 
 
 }
 
+/* --- Bouton mini générique --- */
+
+#minbt-signin {
+    height: clamp(1.5rem, 40px, 2.5rem);
+    width: clamp(1.5rem, 40px, 2.5rem);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+[id^="minbt-"]::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--fontawesome), sans-serif;
+    font-weight: 900;
+}
+
+/* bouton mini connexion */
+
+#minbt-connexion {
+    background-color: var(--color-gris-00);
+    color: var(--color-gris-100);
+}
+#minbt-connexion::before {
+    content: "\f2f6";
+}
+
+/* bouton mini deconnexion */
+
+#minbt-deconnexion {
+    background-color: var(--color-gris-00);
+    color: var(--color-gris-100);
+}
+#minbt-deconnexion::before {
+    content: "\f2f5";
+}
+
+/* bouton mini flag */
+
+#minbt-flag {
+    background-color: var(--color-orange-fonce);
+    color: var(--color-orange-clair);
+}
+#minbt-flag::before {
+    content: "\f02e";
+}
+
+/* bouton mini flagged */
+
+#minbt-flagged {
+    background-color: var(--color-orange-clair);
+    color: var(--color-orange-fonce);
+}
+#minbt-flagged::before {
+    content: "\f02e";
+}
+
+/* bouton mini like */
+
+#minbt-like {
+    background-color: var(--color-rose-clair);
+    color: var(--color-rose-fonce);
+}
+#minbt-like::before {
+    content: "\f004";
+}
+
+/* bouton mini liked */
+
+#minbt-liked {
+    background-color: var(--color-rose-fonce);
+    color: var(--color-rose-clair);
+}
+#minbt-liked::before {
+    content: "\f004";
+}
+
+/* bouton mini like gris */
+
+#minbt-like-gris {
+    background-color: var(--color-gris-60);
+    color: var(--color-gris-100);
+}
+#minbt-like-gris::before {
+    content: "\f004";
+}
+
+/* bouton mini liked gris */
+
+#minbt-liked-gris {
+    background-color: var(--color-gris-100);
+    color: var(--color-gris-60);
+}
+#minbt-liked-gris::before {
+    content: "\f004";
+}
+
+/* bouton mini flag gris */
+
+#minbt-flag-gris {
+    background-color: var(--color-gris-60);
+    color: var(--color-gris-100);
+}
+#minbt-flag-gris::before {
+    content: "\f02e";
+}
+
+/* bouton mini flagged gris */
+
+#minbt-flagged-gris {
+    background-color: var(--color-gris-100);
+    color: var(--color-gris-60);
+}
+#minbt-flagged-gris::before {
+    content: "\f02e";
+}
+
+/* bouton mini ajouter */
+
+#minbt-add {
+    background-color: var(--color-jaune);
+    color: var(--color-gris-00);
+}
+#minbt-add::before {
+    content: "\f055";
+}
+
+/* bouton mini supprimer */
+
+#minbt-delete {
+    background-color: var(--color-rouge);
+    color: var(--color-gris-00);
+}
+#minbt-delete::before {
+    content: "\f056";
+}
+
+/* bouton mini valider */
+
+#minbt-valide {
+    background-color: var(--color-vert);
+    color: var(--color-gris-00);
+}
+#minbt-valide::before {
+    content: "\f058";
+}
+
+/* --- bouton complet générique --- */
+
+[id^="bt-"] {
+    height: 40px;
+    max-height: 2.5rem;
+    min-height: 1.5rem;
+    max-width: 250px;
+    border-radius: 999px;
+    display: inline-grid;
+    grid-auto-flow: column;
+    place-items: center;
+    padding: 0 clamp(0.5rem, 1rem, 1.5rem);
+    background-color: var(--color-gris-00, #eee);
+    color: var(--color-gris-100, #333);
+    font-family: var(--inter), sans-serif;
+    font-size: clamp(0.5rem, 1rem, 1.5rem);
+    text-decoration: none;
+    gap: 10px;
+}
+
+[id^="bt-"]::after {
+    content: attr(data-action);
+    text-transform: capitalize;
+}
+
+[id^="bt-"]::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--fontawesome), sans-serif;
+    font-weight: 900;
+}
+
+/* bouton connexion */
+
+#bt-connexion {
+    background-color: var(--color-gris-00);
+    color: var(--color-gris-100);
+}
+#bt-connexion::before {
+    content: "\f2f6";
+}
+
+/* bouton deconnexion */
+
+#bt-deconnexion {
+    background-color: var(--color-gris-00);
+    color: var(--color-gris-100);
+}
+#bt-deconnexion::before {
+    content: "\f2f5";
+}
+
+/* bouton flag */
+
+#bt-flag {
+    background-color: var(--color-orange-fonce);
+    color: var(--color-orange-clair);
+}
+#bt-flag::before {
+    content: "\f02e";
+}
+
+/* bouton flagged */
+
+#bt-flagged {
+    background-color: var(--color-orange-clair);
+    color: var(--color-orange-fonce);
+}
+#bt-flagged::before {
+    content: "\f02e";
+}
+
+/* bouton like */
+
+#bt-like {
+    background-color: var(--color-rose-clair);
+    color: var(--color-rose-fonce);
+}
+#bt-like::before {
+    content: "\f004";
+}
+
+/* bouton f004 */
+
+#bt-liked {
+    background-color: var(--color-rose-fonce);
+    color: var(--color-rose-clair);
+}
+#bt-liked::before {
+    content: "\f004";
+}
+
+/* bouton like gris */
+
+#bt-like-gris {
+    background-color: var(--color-gris-60);
+    color: var(--color-gris-100);
+}
+#bt-like-gris::before {
+    content: "\f004";
+}
+
+/* bouton liked gris */
+
+#bt-liked-gris {
+    background-color: var(--color-gris-100);
+    color: var(--color-gris-60);
+}
+#bt-liked-gris::before {
+    content: "\f004";
+}
+
+/* bouton flag gris */
+
+#bt-flag-gris {
+    background-color: var(--color-gris-60);
+    color: var(--color-gris-100);
+}
+#bt-flag-gris::before {
+    content: "\f02e";
+}
+
+/* bouton flagged gris */
+
+#bt-flagged-gris {
+    background-color: var(--color-gris-100);
+    color: var(--color-gris-60);
+}
+#bt-flagged-gris::before {
+    content: "\f02e";
+}
+
+/* bouton ajouter */
+
+#bt-add {
+    background-color: var(--color-jaune);
+    color: var(--color-gris-00);
+}
+#bt-add::before {
+    content: "\f055";
+}
+
+/* bouton supprimer */
+
+#bt-delete {
+    background-color: var(--color-rouge);
+    color: var(--color-gris-00);
+}
+#bt-delete::before {
+    content: "\f056";
+}
+
+/* bouton valider */
+
+#bt-valide {
+    background-color: var(--color-vert);
+    color: var(--color-gris-00);
+}
+#bt-valide::before {
+    content: "\f058";
+}
