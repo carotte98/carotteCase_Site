@@ -1,7 +1,5 @@
 package fr.afpa.codecasesite.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 /**
@@ -15,10 +13,9 @@ import lombok.Data;
  * @since 08/04/2026
  */
 
-@Entity
 @Data
 public class Tag {
 
-  @Id
+
   private int id;
 }

@@ -1,11 +1,5 @@
 package fr.afpa.codecasesite.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
@@ -23,15 +17,12 @@ import lombok.Data;
  * @since 2026/04/08
  */
 
-@Entity
 @Data
 public class Post {
 
   /**
    * Variable id.
    */
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   /**
@@ -63,13 +54,11 @@ public class Post {
   /**
    * Variable language de type Tag.
    */
-  @OneToMany(mappedBy = "post")
   private Set<Tag> language;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.
    */
-  @ManyToMany(mappedBy = "post")
   Set<Tag> tagCustom;
 
   /**

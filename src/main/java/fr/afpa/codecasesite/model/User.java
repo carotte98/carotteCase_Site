@@ -1,8 +1,13 @@
 package fr.afpa.codecasesite.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
+
+import fr.afpa.codecasesite.types.Role;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * User
@@ -10,13 +15,12 @@ import lombok.Data;
  * <hr>
  * <p></p>
  *
- * @author Calderoli Alexandre
+ * @author Mordant Thierry
  * @version 0.0.1
- * @since 07/04/2026
+ * @since 2026/04/09
  */
-
 @Data
-public class User implements Serializable {
+public class User {
 
   /**
    * Variable id
@@ -26,6 +30,8 @@ public class User implements Serializable {
   /**
    * Variable pseudo
    */
+  @Size(min = 3, max = 20, message = "Le pseudonyme doit être de 3 à 20 " +
+          "caractères")
   private String pseudo;
 
   /**
@@ -36,32 +42,42 @@ public class User implements Serializable {
   /**
    * Variable email
    */
+  @Email
   private String email;
 
   /**
    * Variable role de type Role (Classe à créer)
    */
-//  Role role;
+  Role role;
 
   /**
    * Variable signInDate
    */
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate signInDate;
 
   /**
    * Variable lastLogin
    */
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate lastLogin;
 
-  public User(String pseudo, String mdp) {
+  @Max(250)
+  private String avatarUser;
+
+  public User(String pseudo, char[] mdp) {
     setPseudo(pseudo);
     setMdp(mdp);
   }
 
-  public User(String pseudo, String mdp, String email) {
+  public User(String pseudo, char[] mdp, String email) {
     setPseudo(pseudo);
     setMdp(mdp);
     setEmail(email);
+  }
+
+  public void setMdp(char[] paraMdp){
+    this.mdp = paraMdp.toString();
   }
 
 }
