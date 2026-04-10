@@ -26,7 +26,7 @@
     --color-orange-clair : #EFCEC3;
 
     /* Font-Family */
-    --source: "Source+Code+Pro";
+    --source: "Source Code Pro";
     --inter : "Inter";
     --fontawesome : "Font Awesome 6 Free";
 
@@ -37,6 +37,17 @@
     --h1-size: clamp(2rem, 3vw + 1rem, 3rem);
     --h2-size: clamp(1.5rem, 2vw + 1rem, 2rem);
     --h3-size: clamp(1.25rem, 2vw + 1rem, 1.5rem);
+
+    /*  AVATAR */
+    img[src=""],
+    img:not([src]) {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        content: url('../images/avatars/default-avatar.svg');
+        display: inline-block;
+    }
+    --avatar-url: url('../images/avatars/default-avatar.svg');
 }
 
 html, body {
@@ -53,51 +64,182 @@ html, body {
 }
 
 * {
-    header {
-        background-color: var(--color-gris-100);
-        width: 100vw;
-        max-height: 150px;
-        height: 13vh;
-        display: flex;
-        justify-content: center;
+    body {
+        background-color: var(--color-gris-00);
 
-        #header-container {
-            max-width: 1440px;
-            width: 82vw;
+        header {
+            background-color: var(--color-gris-100);
+            width: 100vw;
+            max-height: 150px;
+            height: 13vh;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-content: center;
+            justify-content: center;
 
-            #logo-container {
-                max-width: 160px;
+            #header-container {
+                max-width: 1440px;
+                width: 82%;
                 display: flex;
-                align-items: center;
-                margin-left : clamp(1rem, 50px, 3.5rem);
+                flex-direction: row;
+                justify-content: space-between;
+                align-content: center;
 
-                .logo {
-                    max-height: 60px;
-                    height: 40%;
-                    width: auto;
-                }
-            }
+                #logo-container {
+                    max-width: 160px;
+                    display: flex;
+                    align-items: center;
+                    margin-left: clamp(1rem, 50px, 3.5rem);
 
-            #signin-container {
-                display: flex;
-                align-items: center;
-
-                & span:first-child {
-                    margin-right: clamp(0.5rem, 20px, 1.5rem);
+                    .logo {
+                        max-height: 60px;
+                        height: 40%;
+                        width: auto;
+                    }
                 }
 
-                & span:last-child {
-                    margin-right: clamp(1rem, 50px, 3.5rem);
+                #signin-container {
+                    display: flex;
+                    align-items: center;
+
+                    & span:first-child {
+                        margin-right: clamp(0.5rem, 20px, 1.5rem);
+                    }
+
+                    & span:last-child {
+                        margin-right: clamp(1rem, 50px, 3.5rem);
+                    }
                 }
             }
         }
+
+        main {
+            margin-top: clamp(1.5rem, 50px, 3.5rem);
+            width: 100vw;
+            background-color: var(--color-gris-00);
+            display: flex;
+            justify-content: center;
+
+            #main-container {
+                max-width: 1440px;
+                width: 82%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-content: center;
+                gap: 20px;
+            }
+        }
+
+        article {
+            max-width: 1200px;
+            width: 82%;
+            border-radius: 20px;
+            padding: clamp(1rem, 20px, 1.5rem);
+            background-color: var(--color-gris-20);
+            border: 2px solid #FFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            #article-header {
+                width: 100%;
+                height: clamp(2.5rem, 60px, 4.5rem);
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-content: flex-start;
+                align-items: center;
+
+                #info-container {
+                    width: 70%;
+                    display: flex;
+                    align-content: center;
+
+                    #avatar-container {
+                        max-width: 30px;
+                        display: grid;
+                        grid-auto-flow: column;
+                        gap: 20px;
+                        align-items: center;
+
+                        > div {
+                            width: max-content;
+                            font-family: var(--source), sans-serif;
+                            -self: center;
+                        }
+
+                        #avatar {
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            background-image: var(--avatar-url);
+                            background-size: cover;
+                        }
+
+                        #pseudo {
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            color: var(--color-gris-100);
+                            font-size: clamp(0.5rem, 1rem, 1.5rem);
+                        }
+
+                        #datePostCase {
+                            height: 100%;
+                            line-height: 150%;
+                            font-weight: 200;
+                            color: var(--color-gris-80);
+                            font-size: clamp(0.5rem, 1rem, 1.5rem);
+
+                            &::before {
+                                content: "\2022";
+                                font-size: clamp(1rem, 1.5rem, 2rem);
+                            }
+                        }
+
+
+                    }
+                }
+
+                #tag-container {
+                    width: 30%;
+                    display: grid;
+                    align-content: center;
+                    justify-content: end;
+                    gap: 20px;
+
+                    > span {
+                        display: inline-grid;
+                        grid-auto-flow: column;
+                        width: max-content;
+                        font-family: var(--source), sans-serif;
+                        font-weight: 200;
+                        font-size: clamp(1rem, 1.2rem, 1.5rem);
+                        color: var(--color-gris-80);
+                    }
+
+                    .tag::before {
+                        content : "\003C""\2002";
+                    }
+
+                    .tag::after {
+                        content: "\2002""\003E";
+                    }
+                }
+            }
+            #article-container {
+                width: 88%;
+                font-family: var(--source), sans-serif;
+                text-align: left;
+                color: var(--color-gris-100);
+                font-size: clamp(0.5rem, 1rem, 1.5rem);
+            }
+            #article-footer {
+                width: 100%;
+            }
+        }
+
     }
-
-
 }
 
 /* --- Bouton mini générique --- */
@@ -116,6 +258,16 @@ html, body {
     -webkit-font-smoothing: antialiased;
     font-family: var(--fontawesome), sans-serif;
     font-weight: 900;
+}
+
+/* bouton mini s'inscrire */
+
+#minbt-signin {
+    background-color: var(--color-gris-00);
+    color: var(--color-gris-100);
+}
+#minbt-signin::before {
+    content: "\f234";
 }
 
 /* bouton mini connexion */
