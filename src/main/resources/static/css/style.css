@@ -580,15 +580,36 @@ html, body {
 /* --- formulaire --- */
 
 form {
-    > input {
-        display : block;
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: start;
+    gap: 10px;
+
+    label {
+        font-family: var(--inter), sans-serif;
+        font-size: clamp(0.5rem, 1rem, 1.5rem);
+        color: var(--color-gris-100);
+        font-weight: 500;
+        padding-left: 10px;
+    }
+
+        input {
+        display : grid;
         border : 2px solid var(--color-blanc);
-        background-color: var(--color-gris-20);
+        background-color: var(--color-gris-40);
         border-radius: 20px;
-        padding : 10px 20px 10px 20px;
+        padding : 0 20px 0 20px;
         height: 40px;
         width: max-content;
-    }
+        }
+
+        [type="submit"] {
+            border: none;
+            background-color: var(--color-vert);
+            color: var(--color-gris-00);
+            text-transform: uppercase;
+        }
+
 }
 
 
