@@ -25,25 +25,25 @@ public class User {
   /**
    * Variable id
    */
-  private Integer id;
+  private Integer idUser;
 
   /**
    * Variable pseudo
    */
   @Size(min = 3, max = 20, message = "Le pseudonyme doit être de 3 à 20 " +
           "caractères")
-  private String pseudo;
+  private String pseudoUser;
 
   /**
    * Variable mdp
    */
-  private String mdp;
+  private String passwordUser;
 
   /**
    * Variable email
    */
   @Email
-  private String email;
+  private String emailUser;
 
   /**
    * Variable role de type Role (Classe à créer)
@@ -54,30 +54,57 @@ public class User {
    * Variable signInDate
    */
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate signInDate;
+  private LocalDate signupDateUser;
 
   /**
    * Variable lastLogin
    */
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate lastLogin;
+  private LocalDate lastSignInUser;
 
+  /**
+   * Variable avatarUser
+   */
   @Max(250)
   private String avatarUser;
 
-  public User(String pseudo, char[] mdp) {
-    setPseudo(pseudo);
-    setMdp(mdp);
-  }
-
-  public User(String pseudo, char[] mdp, String email) {
-    setPseudo(pseudo);
-    setMdp(mdp);
-    setEmail(email);
-  }
-
+  /**
+   * Méthode setMdp (char[])
+   *<i>de User</i>
+   *<hr>
+   *<p>Setter pour le mot de passe si venu d'un input, non hash</p>
+   *
+   * @param paraMdp venu d'un input
+   */
   public void setMdp(char[] paraMdp){
-    this.mdp = paraMdp.toString();
+    this.passwordUser = paraMdp.toString();
   }
 
+  /**
+   * Méthode setMdp (String)
+   *<i>de User</i>
+   *<hr>
+   *<p>Setter pour le mot de passe si venu d'une BDD, hashé</p>
+   *
+   * @param paraMdp venu d'une BDD
+   */
+  public void setMdp(String paraMdp){
+    this.passwordUser = paraMdp;
+  }
+
+  /**
+   * Méthode setRole
+   *<i>de User</i>
+   *<hr>
+   *<p>Prends le String venu de la BDD et en fait un Role</p>
+   *
+   * @param paraRole Le rôle sous forme de String
+   */
+  public void setRole(String paraRole){
+    if (paraRole.equals("Admin")){
+      this.role = Role.ADMIN;
+    }else{
+      this.role = Role.USER;
+    }
+  }
 }

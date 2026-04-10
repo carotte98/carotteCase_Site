@@ -1,5 +1,8 @@
 package fr.afpa.codecasesite.controller;
 
+import fr.afpa.codecasesite.model.User;
+import fr.afpa.codecasesite.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/")
     public String home() {
-        return "App is running 👍";
+        Iterable<User> users = userService.getUsers();
+
+        return users.toString();
     }
 }
