@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: htmlHead">
+</head>
 
-
+<body>
+<div th:insert="fragments :: headerContent"></div>
 <main>
     <div id="main-container">
-
+        <div th:insert="fragments :: article"></div>
     </div>
 </main>
-
+<div th:insert="fragments :: footer"></div>
 
 </body>
-
 </html>

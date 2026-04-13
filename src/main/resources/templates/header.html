@@ -1,17 +1,7 @@
-<link rel ="stylesheet" href="../static/css/style.css" data-th-href="@{/css/style.css}">
-<head>
-  <meta charset="UTF-8">
-  <title>Code CASE</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
 <header>
   <div id="header-container">
     <div id="logo-container">
-      <img src="../static/images/logo-font-white.png" alt="logo Code CASE" class="logo">
+      <img th:src="@{/images/logo-font-white.png}" alt="logo Code CASE" class="logo">
     </div>
     <div id="signin-container">
       <span><a id="minbt-signin" data-action ="S'inscrire" href=""></a></span>
