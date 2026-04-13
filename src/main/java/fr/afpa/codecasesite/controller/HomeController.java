@@ -25,6 +25,6 @@ public class HomeController {
     public String home() {
 //        Iterable<User> users = userService.getUsers();
 
-        return "index";
+        return "creationPost";
     }
 }

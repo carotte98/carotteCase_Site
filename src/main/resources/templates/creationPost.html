@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: htmlHead">
+</head>
+
+  <body>
+    <div th:insert="fragments :: headerContent"></div>
+    <main>
+      <div th:insert="fragmentCreationPost :: creation-post"></div>
+    </main>
+
+    <div th:insert="fragments :: footer"></div>
+
+  </body>
+</html>
