@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author Mordant Thierry
  * @version 0.0.1
- * @since 09/04/2026
+ * @since 2026/04/09
  */
 @Controller
 public class HomeController {
