@@ -90,7 +90,7 @@ html, body {
                 justify-content: space-between;
                 align-content: center;
 
-                .logo-container {
+                #logo-container {
                     max-width: 160px;
                     display: flex;
                     align-items: center;
@@ -103,7 +103,7 @@ html, body {
                     }
                 }
 
-                .signin-container {
+                #signin-container {
                     display: flex;
                     align-items: center;
 
