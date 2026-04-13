@@ -90,7 +90,7 @@ html, body {
                 justify-content: space-between;
                 align-content: center;
 
-                #logo-container {
+                .logo-container {
                     max-width: 160px;
                     display: flex;
                     align-items: center;
@@ -103,7 +103,7 @@ html, body {
                     }
                 }
 
-                #signin-container {
+                .signin-container {
                     display: flex;
                     align-items: center;
 
@@ -149,7 +149,7 @@ html, body {
             align-items: center;
             gap: 10px;
 
-            #article-header {
+            .article-header {
                 width: 100%;
                 height: clamp(2.5rem, 60px, 4.5rem);
                 display: flex;
@@ -158,12 +158,12 @@ html, body {
                 align-content: flex-start;
                 align-items: center;
 
-                #info-container {
+                .info-container {
                     width: 70%;
                     display: flex;
                     align-content: center;
 
-                    #avatar-container {
+                    .avatar-container {
                         max-width: 30px;
                         display: grid;
                         grid-auto-flow: column;
@@ -176,7 +176,7 @@ html, body {
                             -self: center;
                         }
 
-                        #avatar {
+                        .avatar {
                             width: 30px;
                             height: 30px;
                             border-radius: 50%;
@@ -184,14 +184,14 @@ html, body {
                             background-size: cover;
                         }
 
-                        #pseudo {
+                        .pseudo {
                             font-weight: 600;
                             text-transform: uppercase;
                             color: var(--color-gris-100);
                             font-size: clamp(0.5rem, 1rem, 1.5rem);
                         }
 
-                        #datePostCase {
+                        .datePostCase {
                             height: 100%;
                             line-height: 150%;
                             font-weight: 200;
@@ -208,7 +208,7 @@ html, body {
                     }
                 }
 
-                #tag-container {
+                .tag-container {
                     width: 30%;
                     display: grid;
                     align-content: center;
@@ -234,14 +234,14 @@ html, body {
                     }
                 }
             }
-            #article-container {
+            .article-container {
                 width: 88%;
                 font-family: var(--source), sans-serif;
                 text-align: left;
                 color: var(--color-gris-100);
                 font-size: clamp(0.5rem, 1rem, 1.5rem);
             }
-            #article-footer {
+            .article-footer {
                 width: 100%;
                 height: clamp(2.5rem, 60px, 4.5rem);
                 display: flex;
@@ -258,7 +258,7 @@ html, body {
 
 /* --- Bouton mini générique --- */
 
-#minbt-signin {
+.minbt-signin {
     height: clamp(1.5rem, 40px, 2.5rem);
     width: clamp(1.5rem, 40px, 2.5rem);
     display: grid;
@@ -266,7 +266,7 @@ html, body {
     border-radius: 50%;
 }
 
-[id^="minbt-"]::before {
+[class^="minbt-"]::before {
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -276,147 +276,147 @@ html, body {
 
 /* bouton mini s'inscrire */
 
-#minbt-signin {
+.minbt-signin {
     background-color: var(--color-gris-00);
     color: var(--color-gris-100);
 }
-#minbt-signin::before {
+.minbt-signin::before {
     content: "\f234";
 }
 
 /* bouton mini connexion */
 
-#minbt-connexion {
+.minbt-connexion {
     background-color: var(--color-gris-00);
     color: var(--color-gris-100);
 }
-#minbt-connexion::before {
+.minbt-connexion::before {
     content: "\f2f6";
 }
 
 /* bouton mini deconnexion */
 
-#minbt-deconnexion {
+.minbt-deconnexion {
     background-color: var(--color-gris-00);
     color: var(--color-gris-100);
 }
-#minbt-deconnexion::before {
+.minbt-deconnexion::before {
     content: "\f2f5";
 }
 
 /* bouton mini flag */
 
-#minbt-flag {
+.minbt-flag {
     background-color: var(--color-orange-fonce);
     color: var(--color-orange-clair);
 }
-#minbt-flag::before {
+.minbt-flag::before {
     content: "\f02e";
 }
 
 /* bouton mini flagged */
 
-#minbt-flagged {
+.minbt-flagged {
     background-color: var(--color-orange-clair);
     color: var(--color-orange-fonce);
 }
-#minbt-flagged::before {
+.minbt-flagged::before {
     content: "\f02e";
 }
 
 /* bouton mini like */
 
-#minbt-like {
+.minbt-like {
     background-color: var(--color-rose-clair);
     color: var(--color-rose-fonce);
 }
-#minbt-like::before {
+.minbt-like::before {
     content: "\f004";
 }
 
 /* bouton mini liked */
 
-#minbt-liked {
+.minbt-liked {
     background-color: var(--color-rose-fonce);
     color: var(--color-rose-clair);
 }
-#minbt-liked::before {
+.minbt-liked::before {
     content: "\f004";
 }
 
 /* bouton mini like gris */
 
-#minbt-like-gris {
+.minbt-like-gris {
     background-color: var(--color-gris-60);
     color: var(--color-gris-100);
 }
-#minbt-like-gris::before {
+.minbt-like-gris::before {
     content: "\f004";
 }
 
 /* bouton mini liked gris */
 
-#minbt-liked-gris {
+.minbt-liked-gris {
     background-color: var(--color-gris-100);
     color: var(--color-gris-60);
 }
-#minbt-liked-gris::before {
+.minbt-liked-gris::before {
     content: "\f004";
 }
 
 /* bouton mini flag gris */
 
-#minbt-flag-gris {
+.minbt-flag-gris {
     background-color: var(--color-gris-60);
     color: var(--color-gris-100);
 }
-#minbt-flag-gris::before {
+.minbt-flag-gris::before {
     content: "\f02e";
 }
 
 /* bouton mini flagged gris */
 
-#minbt-flagged-gris {
+.minbt-flagged-gris {
     background-color: var(--color-gris-100);
     color: var(--color-gris-60);
 }
-#minbt-flagged-gris::before {
+.minbt-flagged-gris::before {
     content: "\f02e";
 }
 
 /* bouton mini ajouter */
 
-#minbt-add {
+.minbt-add {
     background-color: var(--color-jaune);
     color: var(--color-gris-00);
 }
-#minbt-add::before {
+.minbt-add::before {
     content: "\f055";
 }
 
 /* bouton mini supprimer */
 
-#minbt-delete {
+.minbt-delete {
     background-color: var(--color-rouge);
     color: var(--color-gris-00);
 }
-#minbt-delete::before {
+.minbt-delete::before {
     content: "\f056";
 }
 
 /* bouton mini valider */
 
-#minbt-valide {
+.minbt-valide {
     background-color: var(--color-vert);
     color: var(--color-gris-00);
 }
-#minbt-valide::before {
+.minbt-valide::before {
     content: "\f058";
 }
 
 /* --- bouton complet générique --- */
 
-[id^="bt-"] {
+[class^="bt-"] {
     height: 40px;
     max-height: 2.5rem;
     min-height: 1.5rem;
@@ -434,12 +434,12 @@ html, body {
     gap: 10px;
 }
 
-[id^="bt-"]::after {
+[class^="bt-"]::after {
     content: attr(data-action);
     text-transform: capitalize;
 }
 
-[id^="bt-"]::before {
+[class^="bt-"]::before {
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -449,131 +449,131 @@ html, body {
 
 /* bouton connexion */
 
-#bt-connexion {
+.bt-connexion {
     background-color: var(--color-gris-00);
     color: var(--color-gris-100);
 }
-#bt-connexion::before {
+.bt-connexion::before {
     content: "\f2f6";
 }
 
 /* bouton deconnexion */
 
-#bt-deconnexion {
+.bt-deconnexion {
     background-color: var(--color-gris-00);
     color: var(--color-gris-100);
 }
-#bt-deconnexion::before {
+.bt-deconnexion::before {
     content: "\f2f5";
 }
 
 /* bouton flag */
 
-#bt-flag {
+.bt-flag {
     background-color: var(--color-orange-fonce);
     color: var(--color-orange-clair);
 }
-#bt-flag::before {
+.bt-flag::before {
     content: "\f02e";
 }
 
 /* bouton flagged */
 
-#bt-flagged {
+.bt-flagged {
     background-color: var(--color-orange-clair);
     color: var(--color-orange-fonce);
 }
-#bt-flagged::before {
+.bt-flagged::before {
     content: "\f02e";
 }
 
 /* bouton like */
 
-#bt-like {
+.bt-like {
     background-color: var(--color-rose-clair);
     color: var(--color-rose-fonce);
 }
-#bt-like::before {
+.bt-like::before {
     content: "\f004";
 }
 
 /* bouton f004 */
 
-#bt-liked {
+.bt-liked {
     background-color: var(--color-rose-fonce);
     color: var(--color-rose-clair);
 }
-#bt-liked::before {
+.bt-liked::before {
     content: "\f004";
 }
 
 /* bouton like gris */
 
-#bt-like-gris {
+.bt-like-gris {
     background-color: var(--color-gris-60);
     color: var(--color-gris-100);
 }
-#bt-like-gris::before {
+.bt-like-gris::before {
     content: "\f004";
 }
 
 /* bouton liked gris */
 
-#bt-liked-gris {
+.bt-liked-gris {
     background-color: var(--color-gris-100);
     color: var(--color-gris-60);
 }
-#bt-liked-gris::before {
+.bt-liked-gris::before {
     content: "\f004";
 }
 
 /* bouton flag gris */
 
-#bt-flag-gris {
+.bt-flag-gris {
     background-color: var(--color-gris-60);
     color: var(--color-gris-100);
 }
-#bt-flag-gris::before {
+.bt-flag-gris::before {
     content: "\f02e";
 }
 
 /* bouton flagged gris */
 
-#bt-flagged-gris {
+.bt-flagged-gris {
     background-color: var(--color-gris-100);
     color: var(--color-gris-60);
 }
-#bt-flagged-gris::before {
+.bt-flagged-gris::before {
     content: "\f02e";
 }
 
 /* bouton ajouter */
 
-#bt-add {
+.bt-add {
     background-color: var(--color-jaune);
     color: var(--color-gris-00);
 }
-#bt-add::before {
+.bt-add::before {
     content: "\f055";
 }
 
 /* bouton supprimer */
 
-#bt-delete {
+.bt-delete {
     background-color: var(--color-rouge);
     color: var(--color-gris-00);
 }
-#bt-delete::before {
+.bt-delete::before {
     content: "\f056";
 }
 
 /* bouton valider */
 
-#bt-valide {
+.bt-valide {
     background-color: var(--color-vert);
     color: var(--color-gris-00);
 }
-#bt-valide::before {
+.bt-valide::before {
     content: "\f058";
 }
 
