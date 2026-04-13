@@ -13,9 +13,24 @@
 <div th:fragment="creation-post">
   <div id="main-container">
     <article>
-      <div id="article-header">
-        <h1>Créer un post</h1>
-        <div id="form"></div>
+      <h1>Créer un post</h1>
+      <div class="article-container">
+        <form th:action="@{/post/create}" method="post">
+
+          <label for="titre">Titre</label>
+          <input type="text" id="titre" name="titre" placeholder="Titre du post"/>
+
+          <label for="description">Description</label>
+          <input type="text" id="description" name="contenu" placeholder="Description"/>
+
+          <label for="tag">Tag</label>
+          <input type="text" id="tag" name="tag" placeholder="ex : JAVA"/>
+
+          <label for="contenu">Contenu</label>
+          <input type="text" id="contenu" name="contenu" placeholder="Code"/>
+
+          <input type="submit" value="Valider"/>
+        </form>
       </div>
     </article>
   </div>
