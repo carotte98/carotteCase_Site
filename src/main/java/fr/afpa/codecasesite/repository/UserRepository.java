@@ -15,11 +15,11 @@ import org.springframework.web.client.RestTemplate;
  * UserRepository
  * <i>de fr.afpa.codecasesite.repository</i>
  * <hr>
- * <p>Repository qui fait le lien entre l'api et la webapp</p>
+ * <p>Repository qui fait le lien entre l'api et la webapp de User</p>
  *
  * @author Mordant Thierry
  * @version 0.0.1
- * @since 09/04/2026
+ * @since 2026/04/09
  */
 @Slf4j
 @Component
