@@ -54,12 +54,12 @@ public class Post {
   /**
    * Variable language de type Tag.
    */
-  private Set<Tag> idCat1;
+  private Tag idCat;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.
    */
-  Set<Tag> tagCustom;
+//  Set<Tag> tagCustom;
 
   /**
    * Variable creationPost.

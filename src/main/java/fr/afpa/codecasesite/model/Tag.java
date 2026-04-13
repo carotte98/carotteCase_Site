@@ -1,5 +1,6 @@
 package fr.afpa.codecasesite.model;
 
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -16,6 +17,7 @@ import lombok.Data;
 @Data
 public class Tag {
 
+  private Integer idTag;
 
-  private int id;
+//  private List<Post> posts;
 }
