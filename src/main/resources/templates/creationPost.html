@@ -6,33 +6,38 @@
   <body>
     <div th:insert="fragments :: headerContent"></div>
     <main>
-
       <div id="main-container">
         <article>
           <h1>Créer un post</h1>
           <div class="article-container">
-            <form th:action="@{/post/create}" method="post">
+            <form method="post" th:action="@{/createPost}" th:object="${post}">
+            <div class="form-group">
+              <input type="text" th:field="*{titrePost}" placeholder="Titre du post"/>
+            </div>
+              <div class="form-group">
+                <input type="text" th:field="*{descriptionPost}" placeholder="Description"/>
+              </div>
+              <div class="form-group">
+                <select id="form-select" th:field="*{idCat}">
+                  <option value="1">Java</option>
+                  <option value="2">HTML</option>
+                  <option value="3">CSS</option>
+                  <option value="4">PHP</option>
+                  <option value="5">JavaScript</option>
+                  <option value="6">Rust</option>
+                </select>
+<!--                <input type="text"  placeholder="Tag ex : JAVA"/>-->
+              </div>
+              <div class="form-group">
+                <input type="text" th:field="*{contenuPost}" placeholder="Code"/>
+              </div>
 
-              <label for="titre">Titre</label>
-              <input type="text" id="titre" name="titre" placeholder="Titre du post"/>
-
-              <label for="description">Description</label>
-              <input type="text" id="description" name="contenu" placeholder="Description"/>
-
-              <label for="tag">Tag</label>
-              <input type="text" id="tag" name="tag" placeholder="ex : JAVA"/>
-
-              <label for="contenu">Contenu</label>
-              <input type="text" id="contenu" name="contenu" placeholder="Code"/>
-
-              <span><a class="bt-valide" data-action ="Valider" href=""></a></span>
+              <button type="submit">Submit</button>
             </form>
           </div>
         </article>
       </div>
-
     </main>
-
     <div th:insert="fragments :: footer"></div>
 
   </body>
