@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: htmlHead">
+</head>
+
+  <body>
+    <div th:insert="fragments :: headerContent"></div>
+    <main>
+
+      <div id="main-container">
+        <article>
+          <h1>Créer un post</h1>
+          <div class="article-container">
+            <form th:action="@{/post/create}" method="post">
+
+              <label for="titre">Titre</label>
+              <input type="text" id="titre" name="titre" placeholder="Titre du post"/>
+
+              <label for="description">Description</label>
+              <input type="text" id="description" name="contenu" placeholder="Description"/>
+
+              <label for="tag">Tag</label>
+              <input type="text" id="tag" name="tag" placeholder="ex : JAVA"/>
+
+              <label for="contenu">Contenu</label>
+              <input type="text" id="contenu" name="contenu" placeholder="Code"/>
+
+              <span><a class="bt-valide" data-action ="Valider" href=""></a></span>
+            </form>
+          </div>
+        </article>
+      </div>
+
+    </main>
+
+    <div th:insert="fragments :: footer"></div>
+
+  </body>
+</html>
