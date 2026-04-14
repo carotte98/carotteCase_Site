@@ -1,12 +1,14 @@
 package fr.afpa.codecasesite.model;
 
+import java.util.List;
+
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 /**
- * Tag
- * <i>de fr.afpa.codecasesite.model</i>
+ * <h1>Model Tag</h1>
  * <hr>
- * <p></p>
+ * <p>classe métier tag</p>
  *
  * @author Calderoli Alexandre
  * @version 0.0.1
@@ -15,7 +17,21 @@ import lombok.Data;
 
 @Data
 public class Tag {
+  /**
+   * Variable ID.
+   */
+  private Integer idTag;
 
+  /**
+   * Variable intitulé
+   */
+  @Size(min = 3, max = 30, message =
+    "Le tag doit avoir un minimum de 3 caractères et un maximum de 30")
+    private String intituleTag;
 
-  private int id;
+  @Override
+  public String toString() {
+    return intituleTag;
+  }
+
 }

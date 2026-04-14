@@ -19,39 +19,73 @@
                 <img src="/images/logo-font-white.png" alt="logo Code CASE" class="logo">
             </div>
             <div id="signin-container">
-                <span><a id="minbt-signin" data-action ="S'inscrire" href=""></a></span>
-                <span><a id="bt-connexion" data-action="Connexion" href="#"></a></span>
+                <span><a class="minbt-signin" data-action ="S'inscrire" href="/signup"></a></span>
+                <span><a class="bt-connexion" data-action="Connexion" href="/login"></a></span>
             </div>
         </div>
     </header>
 </div>
 
-<div th:fragment="article">
+<div th:fragment="case(post)">
     <article>
-        <div id ="article-header">
-            <div id="info-container">
-                <div id ="avatar-container">
-                    <div id="avatar">
+        <div class ="article-header">
+            <div class="info-container">
+                <div class ="avatar-container">
+                    <div class="avatar">
                         <img src="" alt="avatar">
                     </div>
-                    <div id ="pseudo">
+                    <div class ="pseudo">
                         <span>pseudo</span>
                     </div>
-                    <div id ="datePostCase">
-                        <span>il y a 35 min</span>
+                    <div class ="datePostCase">
+                        <span th:text = "${post.dateCreation}">il y a 35 min</span>
                     </div>
                 </div>
             </div>
-            <div id ="tag-container">
-                <span class ="tag">JAVA</span>
+            <div class ="tag-container">
+                <span th:text ="${post.idCat}"</span>
             </div>
         </div>
-        <div id="article-container">
-            test
+        <div class ="article-title" th:text="${post.titrePost}"></div>
+        <div class="article-description" th:text="${post.descriptionPost}"></div>
+        <div class="article-container" th:text="${post.contenuPost}"></div>
+        <div class="article-footer">
+            <span><a class="bt-like" data-action ="like" href=""></a></span>
+            <span><a class="bt-flag" data-action ="flag" href=""></a></span>
         </div>
-        <div id="article-footer">
-            <span><a id="bt-like" data-action ="like" href=""></a></span>
-            <span><a id="bt-flag" data-action ="flag" href=""></a></span>
+    </article>
+</div>
+
+<div th:fragment="signupForm">
+    <article>
+        <div class ="article-header">
+            <div class="info-container">
+                <div class ="avatar-container">
+                    <div class ="pseudo">
+                        <span>Inscription</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-container">
+            <form method="post" th:action="@{/createUser}" th:object="${user}">
+                <div class="form-group">
+                    <input type="text" th:field="*{emailUser}" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{pseudoUser}" placeholder="Pseudonyme">
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{passwordUser}" placeholder="Mot de Passe">
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{avatarUser}" placeholder="Avatar">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="article-footer">
+            <span><a class="bt-valide" data-action ="flag" href="/signup"></a></span>
         </div>
     </article>
 </div>

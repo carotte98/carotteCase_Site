@@ -1,10 +1,12 @@
 package fr.afpa.codecasesite.model;
 
+import fr.afpa.codecasesite.service.TagService;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Set;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Post
@@ -23,7 +25,7 @@ public class Post {
   /**
    * Variable id.
    */
-  private Integer id;
+  private Integer idPost;
 
   /**
    * Variable titre.
@@ -31,39 +33,39 @@ public class Post {
   @Size(min = 3, max = 100,
       message = "Le titre doit être renseigné et"
           + " être entre 3 et 100 caractères")
-  private String titre;
+  private String titrePost;
 
   /**
    * Variable description.
    */
   @Size(max = 250,
       message = "La description doit contenir au maximum 250 caractères")
-  private String description;
+  private String descriptionPost;
 
   /**
    * Variable contenu.
    */
   @NotEmpty(message = "Le post ne doit pas être vide")
-  private String contenu;
+  private String contenuPost;
 
   /**
    * Variable userId.
    */
-  private Integer userId;
+  private Integer idUser;
 
   /**
    * Variable language de type Tag.
    */
-  private Set<Tag> language;
+  private Tag idTag;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.
    */
-  Set<Tag> tagCustom;
+//  Set<Tag> tagCustom;
 
   /**
    * Variable creationPost.
    */
-  private LocalDate creationPost;
+  private LocalDate dateCreation;
 
 }
