@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -38,11 +39,17 @@ public class SignupController {
     @PostMapping("/createUser")
     public ModelAndView saveUser(@ModelAttribute("user") User user){
 
-        user.setSignupDateUser(LocalDate.now());
-        user.setLastSignInUser(LocalDate.now());
-        user.setRole("Admin");
+        try{
+            user.setSignupDateUser(LocalDate.now());
+            user.setLastSignInUser(LocalDate.now());
+            user.setRole("Admin");
 
-        userService.saveUser(user);
-        return new ModelAndView("redirect:/");
+            userService.saveUser(user);
+            return new ModelAndView("redirect:/");
+        }catch (ResponseStatusException rx){
+            return new ModelAndView("redirect:/signup");
+
+        }
+
     }
 }
