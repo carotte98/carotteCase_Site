@@ -5,6 +5,8 @@ import fr.afpa.codecasesite.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 /**
  * UserService
@@ -23,19 +25,23 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Iterable<User> getUsers(){
+    public Iterable<User> getUsers() throws HttpServerErrorException, HttpClientErrorException {
         return userRepository.getUsers();
     }
 
-    public User getUser(int id){
+    public User getUser(int id) throws HttpServerErrorException, HttpClientErrorException{
         return userRepository.getUser(id);
     }
 
-    public void deleteUser(int id){
+    public User getUserByMail(String mail) throws HttpServerErrorException, HttpClientErrorException{
+        return userRepository.getUserByMail(mail);
+    }
+
+    public void deleteUser(int id) throws HttpServerErrorException, HttpClientErrorException{
         userRepository.deleteUser(id);
     }
 
-    public User saveUser(User user){
+    public User saveUser(User user) throws HttpServerErrorException, HttpClientErrorException{
         User saved;
 
         if (user.getIdUser() == null){

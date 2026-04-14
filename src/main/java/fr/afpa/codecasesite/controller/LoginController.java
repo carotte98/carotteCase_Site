@@ -14,42 +14,45 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDate;
 
 /**
- * SignupController
+ * LoginController
  * <i>de fr.afpa.codecasesite.controller</i>
  * <hr>
  * <p></p>
  *
  * @author Mordant Thierry
  * @version 0.0.1
- * @since 13/04/2026
+ * @since 14/04/2026
  */
 @Controller
-public class SignupController {
+public class LoginController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/signup")
-    public String signup(Model model) {
+    @GetMapping("/login")
+    public String login(Model model) {
         model.addAttribute("user", new User());
 
-        return "signup";
+        return "login";
     }
 
-    @PostMapping("/createUser")
-    public ModelAndView saveUser(@ModelAttribute("user") User user){
+    @PostMapping("/loginUser")
+    public ModelAndView loginUser(@ModelAttribute("user") User user){
 
         try{
-            user.setSignupDateUser(LocalDate.now());
-            user.setLastSignInUser(LocalDate.now());
-            user.setRole("Admin");
+            User checker = userService.getUserByMail(user.getEmailUser());
 
-            userService.saveUser(user);
-            return new ModelAndView("redirect:/");
+
+            if(checker != null){
+                if (checker.getPasswordUser().equals(user.getPasswordUser())){
+                    return new ModelAndView("redirect:/espaceUser?userMail=" + checker.getEmailUser());
+                }
+            }
         }catch (ResponseStatusException rx){
-            return new ModelAndView("redirect:/signup");
+            return new ModelAndView("redirect:/login");
 
         }
 
+        return new ModelAndView("redirect:/login");
     }
 }
