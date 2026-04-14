@@ -26,7 +26,7 @@
     </header>
 </div>
 
-<div th:fragment="case">
+<div th:fragment="case(post)">
     <article>
         <div class ="article-header">
             <div class="info-container">
@@ -38,17 +38,17 @@
                         <span>pseudo</span>
                     </div>
                     <div class ="datePostCase">
-                        <span>il y a 35 min</span>
+                        <span th:text = "${post.dateCreation}">il y a 35 min</span>
                     </div>
                 </div>
             </div>
             <div class ="tag-container">
-                <span class ="tag">JAVA</span>
+                <span th:text ="${post.idCat}"</span>
             </div>
         </div>
-        <div class="article-container">
-            test
-        </div>
+        <div class ="article-title" th:text="${post.titrePost}"></div>
+        <div class="article-description" th:text="${post.descriptionPost}"></div>
+        <div class="article-container" th:text="${post.contenuPost}"></div>
         <div class="article-footer">
             <span><a class="bt-like" data-action ="like" href=""></a></span>
             <span><a class="bt-flag" data-action ="flag" href=""></a></span>
