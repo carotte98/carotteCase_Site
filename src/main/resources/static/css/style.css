@@ -234,12 +234,31 @@ html, body {
                     }
                 }
             }
+            .article-title {
+                width: 88%;
+                font-family: var(--source), sans-serif;
+                text-align: center;
+                color: var(--color-orange-fonce);
+                font-size: clamp(0.7rem, 1.2rem, 1.7rem);
+            }
+
+            .article-description {
+                width: 88%;
+                font-family: var(--inter), sans-serif;
+                text-align: center;
+                color: var(--color-gris-80);
+                font-size: clamp(0.3rem, 0.8rem, 1.3rem);
+                white-space: pre-wrap;
+                margin-bottom: 2rem;
+            }
+
             .article-container {
                 width: 88%;
                 font-family: var(--source), sans-serif;
                 text-align: left;
                 color: var(--color-gris-100);
                 font-size: clamp(0.5rem, 1rem, 1.5rem);
+                white-space: pre-wrap;
             }
             .article-footer {
                 width: 100%;
