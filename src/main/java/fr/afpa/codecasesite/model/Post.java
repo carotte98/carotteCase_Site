@@ -1,10 +1,12 @@
 package fr.afpa.codecasesite.model;
 
+import fr.afpa.codecasesite.service.TagService;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Set;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Post
@@ -54,7 +56,7 @@ public class Post {
   /**
    * Variable language de type Tag.
    */
-  private Tag idCat;
+  private Tag idTag;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.

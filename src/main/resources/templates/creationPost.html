@@ -18,15 +18,12 @@
                 <input type="text" th:field="*{descriptionPost}" placeholder="Description"/>
               </div>
               <div class="form-group">
-                <select id="form-select" th:field="*{idCat}">
-                  <option value="1">Java</option>
-                  <option value="2">HTML</option>
-                  <option value="3">CSS</option>
-                  <option value="4">PHP</option>
-                  <option value="5">JavaScript</option>
-                  <option value="6">Rust</option>
+                <select name="tagId">
+                  <option>Choisir un tag</option>
+                  <option th:each="tag: ${tags}"
+                          th:value="${tag.idTag}" th:text="${tag.intituleTag}">
+                  </option>
                 </select>
-<!--                <input type="text"  placeholder="Tag ex : JAVA"/>-->
               </div>
               <div class="form-group">
                 <input type="text" th:field="*{contenuPost}" placeholder="Code"/>
