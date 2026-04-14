@@ -39,8 +39,10 @@ public class UserService {
         User saved;
 
         if (user.getIdUser() == null){
+            System.out.println("create");
             saved = userRepository.createUser(user);
         }else{
+            System.out.println("update");
             saved = userRepository.updateUser(user);
         }
 
