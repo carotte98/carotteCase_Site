@@ -29,5 +29,9 @@ public class Tag {
     "Le tag doit avoir un minimum de 3 caractères et un maximum de 30")
     private String intituleTag;
 
+  @Override
+  public String toString() {
+    return intituleTag;
+  }
 
 }
