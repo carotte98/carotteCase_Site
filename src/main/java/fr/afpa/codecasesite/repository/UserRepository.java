@@ -9,7 +9,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  * UserRepository
@@ -40,21 +43,28 @@ public class UserRepository {
      *<p>Renvoie tout les Users en BDD</p>
      * @return un Iterable de User
      */
-    public Iterable<User> getUsers(){
+    public Iterable<User> getUsers() throws HttpServerErrorException, HttpClientErrorException{
         String BASE_API_URL = props.getApiUrl();
         String getPersonsUrl = BASE_API_URL + "/users";
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<Iterable<User>> response = restTemplate.exchange(
+                    getPersonsUrl,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<>() {
+                    }
+            );
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<User>> response = restTemplate.exchange(
-                getPersonsUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<>() {}
-        );
+            log.debug("Get Users " + response.getStatusCode());
 
-        log.debug("Get Users " + response.getStatusCode());
+            return response.getBody();
+        }catch (HttpClientErrorException cx){
+            throw new ResponseStatusException(cx.getStatusCode(), "erreur Client");
+        }catch (HttpServerErrorException sx){
+            throw new ResponseStatusException(sx.getStatusCode(), "erreur Client");
+        }
 
-        return response.getBody();
     }
 
     /**
@@ -66,21 +76,59 @@ public class UserRepository {
      * @param id l'id du User cherché
      * @return le User
      */
-    public User getUser(int id){
+    public User getUser(int id) throws HttpServerErrorException, HttpClientErrorException{
         String BASE_API_URL = props.getApiUrl();
         String getPersonUrl = BASE_API_URL + "/user/" + id;
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<User> response = restTemplate.exchange(
+                    getPersonUrl,
+                    HttpMethod.GET,
+                    null,
+                    User.class
+            );
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<User> response = restTemplate.exchange(
-                getPersonUrl,
-                HttpMethod.GET,
-                null,
-                User.class
-        );
+            log.debug("Get User " + response.getStatusCode());
 
-        log.debug("Get User " + response.getStatusCode());
+            return response.getBody();
+        }catch (HttpClientErrorException cx){
+            throw new ResponseStatusException(cx.getStatusCode(), "erreur Client");
+        }catch (HttpServerErrorException sx){
+            throw new ResponseStatusException(sx.getStatusCode(), "erreur Client");
+        }
 
-        return response.getBody();
+    }
+
+    /**
+     * Méthode getUserByMail
+     *
+     *<i>de UserRepository</i>
+     *<hr>
+     *<p>Renvoie un User avec l'email spécifié</p>
+     * @param mail l'email du User cherché
+     * @return le User
+     */
+    public User getUserByMail(String mail) throws HttpServerErrorException, HttpClientErrorException{
+        String BASE_API_URL = props.getApiUrl();
+        String getPersonUrl = BASE_API_URL + "/userMail/" + mail;
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<User> response = restTemplate.exchange(
+                    getPersonUrl,
+                    HttpMethod.GET,
+                    null,
+                    User.class
+            );
+
+            log.debug("Get User " + response.getStatusCode());
+
+            return response.getBody();
+        }catch (HttpClientErrorException cx){
+            throw new ResponseStatusException(cx.getStatusCode(), "erreur Client");
+        }catch (HttpServerErrorException sx){
+            throw new ResponseStatusException(sx.getStatusCode(), "erreur Client");
+        }
+
     }
 
     /**
@@ -92,22 +140,28 @@ public class UserRepository {
      * @param user le User à créer
      * @return le user créé
      */
-    public User createUser(User user){
+    public User createUser(User user) throws HttpServerErrorException, HttpClientErrorException{
         String BASE_API_URL = props.getApiUrl();
         String createPersonUrl = BASE_API_URL + "/user";
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpEntity<User> request = new HttpEntity<>(user);
+            ResponseEntity<User> response = restTemplate.exchange(
+                    createPersonUrl,
+                    HttpMethod.POST,
+                    request,
+                    User.class
+            );
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<User> request = new HttpEntity<>(user);
-        ResponseEntity<User> response = restTemplate.exchange(
-                createPersonUrl,
-                HttpMethod.POST,
-                request,
-                User.class
-        );
+            log.debug("Create User " + response.getStatusCode());
 
-        log.debug("Create User " + response.getStatusCode());
+            return response.getBody();
+        }catch (HttpClientErrorException cx){
+            throw new ResponseStatusException(cx.getStatusCode(), "erreur Client");
+        }catch (HttpServerErrorException sx){
+            throw new ResponseStatusException(sx.getStatusCode(), "erreur Client");
+        }
 
-        return response.getBody();
     }
 
     /**
@@ -119,22 +173,28 @@ public class UserRepository {
      * @param user le user mis à jour
      * @return le user mis à jour si réussi
      */
-    public User updateUser(User user){
+    public User updateUser(User user)  throws HttpServerErrorException, HttpClientErrorException{
         String BASE_API_URL = props.getApiUrl();
         String updatePersonUrl = BASE_API_URL + "/user/" + user.getIdUser();
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpEntity<User> request = new HttpEntity<>(user);
+            ResponseEntity<User> response = restTemplate.exchange(
+                    updatePersonUrl,
+                    HttpMethod.PUT,
+                    request,
+                    User.class
+            );
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<User> request = new HttpEntity<>(user);
-        ResponseEntity<User> response = restTemplate.exchange(
-                updatePersonUrl,
-                HttpMethod.PUT,
-                request,
-                User.class
-        );
+            log.debug("Update User " + response.getStatusCode());
 
-        log.debug("Update User " + response.getStatusCode());
+            return response.getBody();
+        }catch (HttpClientErrorException cx){
+            throw new ResponseStatusException(cx.getStatusCode(), "erreur Client");
+        }catch (HttpServerErrorException sx){
+            throw new ResponseStatusException(sx.getStatusCode(), "erreur Client");
+        }
 
-        return response.getBody();
     }
 
     /**
@@ -145,18 +205,25 @@ public class UserRepository {
      *<p>Supprime le User avec cet id, ne renvoie rien</p>
      * @param id l'id du User à supprimer
      */
-    public void deleteUser(int id){
+    public void deleteUser(int id) throws HttpServerErrorException, HttpClientErrorException{
         String BASE_API_URL = props.getApiUrl();
         String getPersonUrl = BASE_API_URL + "/user/" + id;
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<User> response = restTemplate.exchange(
-                getPersonUrl,
-                HttpMethod.DELETE,
-                null,
-                User.class
-        );
+        try{
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> response = restTemplate.exchange(
+                    getPersonUrl,
+                    HttpMethod.DELETE,
+                    null,
+                    String.class
+            );
+            log.debug("Delete User " + response.getStatusCode());
+        }catch (HttpClientErrorException cx){
+            throw new ResponseStatusException(cx.getStatusCode(), "erreur Client");
+        }catch (HttpServerErrorException sx){
+            throw new ResponseStatusException(sx.getStatusCode(), "erreur Client");
+        }
 
-        log.debug("Delete User " + response.getStatusCode());
+
     }
 }
