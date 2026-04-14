@@ -1,12 +1,11 @@
 package fr.afpa.codecasesite.controller;
 
-import fr.afpa.codecasesite.model.Post;
 import fr.afpa.codecasesite.service.PostService;
 import fr.afpa.codecasesite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * HomeController
@@ -25,9 +24,9 @@ public class HomeController {
     private PostService postService;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home() {
 //        Iterable<User> users = userService.getUsers();
-//        model.addAttribute("post", new Post());
-        return "index";
+
+        return "creationPost";
     }
 }
