@@ -18,12 +18,12 @@
         </div>
       </div>
       <div class="article-container">
-        <form method="post" th:object="${user}" th:action="@{/saveUser}">
+        <form id="formSave" method="post" th:object="${user}" th:action="@{/saveUser}">
           <div class="form-group">
             <input type="text" th:field="*{emailUser}" placeholder="Email">
           </div>
           <div class="form-group">
-            <input type="text" th:field="*{pseudoUser}" placeholder="Pseudonyme">
+            <input type="text" name="pseudoUser" th:field="*{pseudoUser}" placeholder="Pseudonyme">
           </div>
           <div class="form-group">
             <input type="text" th:field="*{passwordUser}" placeholder="Mot de Passe">
@@ -34,7 +34,7 @@
 
           <button type="submit" >Save</button>
         </form>
-        <form method="post" th:object="${user}" th:action="@{/deleteUser}">
+        <form id="formDelete" method="post" th:object="${user}" th:action="@{/deleteUser}">
           <input type="hidden" th:field="*{emailUser}" placeholder="Email">
           <button type="submit">Delete</button>
         </form>
