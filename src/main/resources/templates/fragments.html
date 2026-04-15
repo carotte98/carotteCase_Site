@@ -35,7 +35,7 @@
                         <img src="" alt="avatar">
                     </div>
                     <div class ="pseudo">
-                        <span>pseudo</span>
+                        <span th:text ="${post.idUser}"></span>
                     </div>
                     <div class ="datePostCase">
                         <span th:text = "${post.dateCreation}">il y a 35 min</span>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class ="tag-container">
-                <span th:text ="${post.idCat}"</span>
+                <span th:text ="${post.idTag}"></span>
             </div>
         </div>
         <div class ="article-title" th:text="${post.titrePost}"></div>

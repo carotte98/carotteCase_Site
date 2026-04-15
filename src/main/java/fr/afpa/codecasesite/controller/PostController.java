@@ -35,6 +35,9 @@ public class PostController {
   @Autowired
   private TagService tagService;
 
+  @Autowired
+  private UserService userService;
+
   @GetMapping("/creationPost")
   public String formulaire(Model model) {
     model.addAttribute("post", new Post());
@@ -45,7 +48,7 @@ public class PostController {
   @PostMapping("/createPost")
   public ModelAndView savePost(@ModelAttribute("post") Post post, @RequestParam("tagId") String id){
     post.setIdTag(tagService.getTag(Integer.parseInt(id)));
-    post.setIdUser(1);
+    post.setIdUser(userService.getUser(1));
     post.setDateCreation(LocalDate.now());
 
     postService.savePost(post);

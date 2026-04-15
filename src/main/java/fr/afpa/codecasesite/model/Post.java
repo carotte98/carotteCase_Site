@@ -51,7 +51,7 @@ public class Post {
   /**
    * Variable userId.
    */
-  private Integer idUser;
+  private User idUser;
 
   /**
    * Variable language de type Tag.

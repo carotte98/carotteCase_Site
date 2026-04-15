@@ -1,6 +1,7 @@
 package fr.afpa.codecasesite.controller;
 
 import fr.afpa.codecasesite.model.Post;
+import fr.afpa.codecasesite.model.User;
 import fr.afpa.codecasesite.service.PostService;
 import fr.afpa.codecasesite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-//        Iterable<User> users = userService.getUsers();
-        model.addAttribute("post", new Post());
+        model.addAttribute("Posts", postService.getPosts());
         return "index";
     }
 }

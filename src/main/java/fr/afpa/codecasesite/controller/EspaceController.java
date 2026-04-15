@@ -1,6 +1,8 @@
 package fr.afpa.codecasesite.controller;
 
+import fr.afpa.codecasesite.model.Post;
 import fr.afpa.codecasesite.model.User;
+import fr.afpa.codecasesite.service.PostService;
 import fr.afpa.codecasesite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class EspaceController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PostService postService;
+
 
     @GetMapping("/espaceUser")
     public String login(@RequestParam String userMail, Model model) {
@@ -35,7 +40,19 @@ public class EspaceController {
     @PostMapping("/deleteUser")
     public ModelAndView deleteUser(@ModelAttribute("user") User user) {
         User realUser = userService.getUserByMail(user.getEmailUser());
+        User anoUser = userService.getUser(1);
+
+        Iterable<Post> lesPosts = postService.getPosts();
+        for (Post post: lesPosts){
+            if (post.getIdUser().getIdUser() == realUser.getIdUser()){
+                post.setIdUser(anoUser);
+                System.out.println(post);
+                postService.savePost(post);
+            }
+        }
+
         userService.deleteUser(realUser.getIdUser());
+
 
         return new ModelAndView("redirect:/");
     }

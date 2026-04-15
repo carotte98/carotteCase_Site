@@ -107,4 +107,9 @@ public class User {
       this.role = Role.USER;
     }
   }
+
+  @Override
+  public String toString() {
+    return pseudoUser;
+  }
 }
