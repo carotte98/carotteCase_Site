@@ -55,7 +55,7 @@ jobs:
       - name: Start API
         run: sudo service carotte98/carottecaseapi start
 
-      - name: wait for MySql
+      - name: wait for API
         run: |
           while ! curl 127.0.0.1:9002; do
             sleep 1
