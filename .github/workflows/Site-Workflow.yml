@@ -54,7 +54,7 @@ jobs:
 
       - name: wait for API
         run: |
-          until curl -s -f http://127.0.0.1:9002; do
+          while ! curl -s -f http://127.0.0.1:9002; do
             sleep 2
           done
 
