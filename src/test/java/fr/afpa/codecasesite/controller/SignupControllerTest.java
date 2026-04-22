@@ -24,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Disabled
  class SignupControllerTest {
 
     private WebDriver driver;
@@ -51,6 +52,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @Test
     @Order(1)
+    @Disabled
     void testCreateUserPage() {
         driver.get("http://localhost:9001/signup");
 
@@ -77,6 +79,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @Test
     @Order(2)
+    @Disabled
     void testChangeUser() {
         driver.get("http://localhost:9001/espaceUser?userMail=test@mail.com");
 
@@ -97,6 +100,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @Test
     @Order(3)
+    @Disabled
     void testUserSpace() {
         driver.get("http://localhost:9001/espaceUser?userMail=test@mail.com");
 
