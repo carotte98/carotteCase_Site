@@ -24,7 +24,6 @@ public class CodecasesiteApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception{
 		System.out.println(props.getApiUrl());
 	}
-
-	//EF
+	
 
 }
