@@ -26,7 +26,7 @@ jobs:
           - 3306:3306
 
       apiCodeCase:
-        image: carotte98/carottecaseapi:lastest
+        image: carotte98/carottecaseapi:latest
         env:
           MYSQL_URL: ${{ secrets.MYSQL_URL }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
@@ -134,7 +134,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER }}/carottecaseapi:latest
+          tags: ${{ secrets.DOCKERHUB_USER }}/carottecasesite:latest
 
       - run: echo "This job's status is ${{ job.status }}"
 
