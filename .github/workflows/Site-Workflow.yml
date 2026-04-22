@@ -52,11 +52,11 @@ jobs:
       - name: Create DB from Script
         run: mysql -u${{ secrets.MYSQL_USER }} -p${{ secrets.MYSQL_PASSWORD }} < bdddumps/ScriptCreation.sql
 
-      - name: wait for API
-        run: |
-          while ! curl -s -f http://127.0.0.1:9002; do
-            sleep 2
-          done
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Setup ChromeDriver
+        uses: browser-actions/setup-chromedriver@v1
 
       - name: Set up JDK 25
         uses: actions/setup-java@v5
