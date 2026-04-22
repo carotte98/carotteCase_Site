@@ -25,5 +25,4 @@ public class CodecasesiteApplication implements CommandLineRunner {
 		System.out.println(props.getApiUrl());
 	}
 
-	//fz
 }
