@@ -52,13 +52,10 @@ jobs:
       - name: Create DB from Script
         run: mysql -u${{ secrets.MYSQL_USER }} -p${{ secrets.MYSQL_PASSWORD }} < bdddumps/ScriptCreation.sql
 
-      - name: Start API
-        run: sudo service carotte98/carottecaseapi start
-
       - name: wait for API
         run: |
-          while ! curl 127.0.0.1:9002; do
-            sleep 1
+          until curl -s -f http://127.0.0.1:9002; do
+            sleep 2
           done
 
       - name: Set up JDK 25
