@@ -1,0 +1,49 @@
+name: Carotte_Case
+
+services:
+  db:
+    image: mysql:8.0
+    ports:
+      - "3036:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./bdddumps/ScriptCreation.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      #MYSQL_USER: root
+      #MYSQL_PASSWORD: root
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    depends_on:
+      db:
+        condition: service_healthy
+    image: carotte98/carottecaseapi:latest
+    ports:
+      - "9002:9002"
+    restart: always
+    environment:
+      MYSQL_URL: jdbc:mysql://db:3306/codecase
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    working_dir: /app
+
+  site:
+    depends_on:
+      - db
+      - api
+    image: carotte98/carottecasesite:latest
+    ports:
+      - "9001:9001"
+    restart: always
+    environment:
+      API_URL: http://api:9002
+    working_dir: /app
+
+volumes:
+  db_data:

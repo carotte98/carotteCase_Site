@@ -1,4 +1,4 @@
-create database codecase;
+Create database codecase;
 
 use codecase;
 
