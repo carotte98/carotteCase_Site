@@ -17,28 +17,11 @@ pipeline {
             }
         }
 
-        stage('Build Maven') {
-            steps {
-                bat 'mvn clean package'
+        stage('Deploy docker-compose') {
+            script {
+                bat 'docker-compose up -d --build --force-recreate --remove-orphans'
             }
         }
 
-        stage('Generate Allure Report') {
-            steps {
-                bat 'mvn allure:report'
-            }
-        }
-    }
-    
-    post {
-        always {
-            allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'target/allure-results']]
-            ])
-        }
     }
 }
