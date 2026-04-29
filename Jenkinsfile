@@ -18,8 +18,10 @@ pipeline {
         }
 
         stage('Deploy docker-compose') {
-            script {
-                bat 'docker-compose up -d --build --force-recreate --remove-orphans'
+            steps {
+                script {
+                    bat 'docker-compose up -d --build --force-recreate --remove-orphans'
+                }
             }
         }
 
